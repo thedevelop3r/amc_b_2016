@@ -11,10 +11,10 @@ a 0 = 1
 a 1 = 2 ** (1 / 19)
 a n = a (n - 1) * a (n - 2)
 
--- b is the pattern in the exponents of series a
+-- b is the pattern in the exponents of series a (the fibonacci series)
 b 0 = 0
-b n | n `mod` 2 == 0 = 2 * b (n - 1) - 1
-    | otherwise	     = 2 * b (n - 1) + 1
+b 1 = 1
+b n = b (n - 1) * b (n - 2)
 
 -- c is the sum of the exponents in series b mod 19 (the numerator of the exponent in series a mod 19; when it is 0 there is a solution)
 c n = sum (map b [0..n]) `mod` 19
